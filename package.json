@@ -21,7 +21,7 @@
   ],
   "main": "dist/vue-event-hub.min.js",
   "scripts": {
-    "dev:test": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "dev:example": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "webpack -p --config webpack.lib.config.js"
   },
   "dependencies": {

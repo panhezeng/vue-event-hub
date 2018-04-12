@@ -55,10 +55,10 @@ console.log(Vue.eventHub)
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev:test
+# 运行插件使用示例
+npm run dev:example
 
-# build for production with minification
+# 编译插件
 npm run build
 ```
 
