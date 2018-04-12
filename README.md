@@ -49,14 +49,14 @@ console.log(Vue.eventHub)
     getData
     delData
 
-## 源码
+## 编译
 
 ``` bash
 # install dependencies
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+npm run dev:test
 
 # build for production with minification
 npm run build
