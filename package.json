@@ -21,7 +21,6 @@
     "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
-    "@panhezeng/vue-event-hub": "^1.0.1",
     "css-loader": "^0.28.11",
     "vue": "^2.5.11"
   },
