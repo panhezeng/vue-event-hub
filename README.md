@@ -56,7 +56,7 @@ console.log(Vue.eventHub)
 npm install
 
 # 运行插件使用示例
-npm run dev:example
+npm run example
 
 # 编译插件
 npm run build
