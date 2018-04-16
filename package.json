@@ -15,10 +15,6 @@
     "type": "git",
     "url": "git+https://github.com/panhezeng/vue-event-hub.git"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
   "main": "dist/vue-event-hub.min.js",
   "scripts": {
     "example": "webpack-dev-server --open --hot --config webpack.example.config.js",
