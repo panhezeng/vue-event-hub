@@ -3,9 +3,9 @@
 ## use
 
 ```javascript
-import VueEventHub from '@panhezeng/vue-event-hub'
+import Index from '@panhezeng/vue-event-hub'
 
-Vue.use(VueEventHub)
+Vue.use(Index)
 
 console.log(Vue.eventHub)
 ```

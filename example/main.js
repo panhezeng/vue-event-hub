@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import VueEventHub from '../vue-event-hub.js'
+import Index from '../src/index.js'
 import App from './components/App.vue'
 
-Vue.use(VueEventHub)
+Vue.use(Index)
 
 new Vue({
   el: '#app',

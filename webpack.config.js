@@ -3,13 +3,14 @@ var path = require('path')
 module.exports = {
   mode: 'production',
 //  mode: 'development',
-  entry: './src/vue-event-hub.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'vue-event-hub.min.js',
     libraryTarget: 'umd',
     globalObject: 'this',
     library: 'VueEventHub',
+    umdNamedDefine: true,
   },
   externals: {},
   module: {
