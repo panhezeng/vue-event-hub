@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    请打开浏览器控制台，看输出日志，VueEventHub {{user.join()}}
+    <h1>VueEventHub example</h1>
+    <p>
+      请打开浏览器控制台，看输出日志， {{user.join(' ====> ')}}
+    </p>
+
   </div>
 </template>
 
