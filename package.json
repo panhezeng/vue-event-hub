@@ -25,7 +25,7 @@
   "scripts": {
     "dev:example": "webpack-dev-server --mode development --open --hot --config webpack.example.config.js",
     "build:example": "webpack --mode production --config webpack.example.config.js",
-    "build": "webpack"
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "css-loader": "^0.28.11",

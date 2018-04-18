@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    VueEventHub {{user.join()}}
+    请打开浏览器控制台，看输出日志，VueEventHub {{user.join()}}
   </div>
 </template>
 
