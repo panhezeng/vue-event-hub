@@ -1,15 +1,21 @@
 <template>
   <div id="app">
-    VueEventHub
+    VueEventHub {{user.join()}}
   </div>
 </template>
 
 <script>
   export default {
     name: 'App',
+    data () {
+      return {
+        user: [],
+      }
+    },
     created () {
       this.$eventHub.watch('user', (newVal, oldVal) => {
         console.log(this.$eventHub.getData('user'), newVal, oldVal)
+        this.user.push(newVal ? JSON.stringify(this.$eventHub.getData('user')) : 'undefined')
       })
       this.$eventHub.on('AppSetUser', this.setUser.bind(this))
       this.$eventHub.emit('AppSetUser', {name: 'phz'})

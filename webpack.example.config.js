@@ -1,11 +1,10 @@
 var path = require('path')
 
 module.exports = {
-  mode: 'development',
   entry: './example/main.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'build.js',
+    path: path.resolve(__dirname, 'docs'),
+    filename: 'example.js',
   },
   module: {
     rules: [
