@@ -16,7 +16,7 @@ console.log(Vue.eventHub)
 
 ```javascript
 // 带数据管理功能的
-import VueEventHub from '@panhezeng/vue-event-hub/vue-event-hub-store.min.js'
+import VueEventHub from '@panhezeng/vue-event-hub/dist/vue-event-hub-store.min.js'
 ```
 
 ```vue
