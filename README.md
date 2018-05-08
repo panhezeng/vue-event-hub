@@ -5,11 +5,18 @@
 ## use
 
 ```javascript
+
+// 默认不带数据管理功能的纯事件hub
 import VueEventHub from '@panhezeng/vue-event-hub'
 
 Vue.use(VueEventHub)
 
 console.log(Vue.eventHub)
+```
+
+```javascript
+// 带数据管理功能的
+import VueEventHub from '@panhezeng/vue-event-hub/vue-event-hub-store.min.js'
 ```
 
 ```vue
