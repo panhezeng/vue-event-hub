@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueEventHub from '../src'
+import VueEventHub from '../src/store'
 import App from './components/App.vue'
 
 Vue.use(VueEventHub)

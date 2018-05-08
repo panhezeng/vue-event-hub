@@ -1,5 +1,5 @@
 /**
- * 因为VueEventHub是全项目通用vue实例，所以覆写了on off实例方法，对事件操作进行了检查校验，并提供了相应的提示
+ * 因为VueEventHub是全项目通用vue实例，所以覆写了on off实例方法，并提供了setData getData delData实例方法，这些方法对事件和数据操作进行了检查校验，并提供了相应的提示
  * 因为hot热更新也会触发这个插件实例方法的错误警告提示，为了不影响hot更新调试，使用console.warn，而没有使用throw
  */
 
@@ -48,6 +48,47 @@ function install (_Vue) {
     }
   }
 
+  function setData (name, data, force) {
+    if (force || !eventHub.store.hasOwnProperty(String(name))) {
+      let store = Object.assign({}, eventHub.store)
+      store[String(name)] = data
+      eventHub.store = store
+    } else {
+      console.warn(name + ':已有同名数据节点，请换个数据节点名，如要覆盖数据节点，请设置force参数为true--$eventHub')
+    }
+  }
+
+  function getData (name) {
+    if (eventHub.store.hasOwnProperty(String(name))) {
+      return eventHub.store[String(name)]
+    } else {
+      console.log(name + ':没有该命名的数据节点，如有需要请用setData方法创建--$eventHub')
+    }
+  }
+
+  function delData (name) {
+    if (eventHub.store.hasOwnProperty(String(name))) {
+      let store = Object.assign({}, eventHub.store)
+      delete store[String(name)]
+      eventHub.store = store
+    } else {
+      console.log(name + ':没有该命名的数据节点，删除无效--$eventHub')
+    }
+  }
+
+  function watch (expOrFn, callback, options) {
+    if (typeof expOrFn === 'string') {
+      expOrFn = 'store.' + expOrFn
+    }
+    if (!options) {
+      options = {
+        deep: true,
+        immediate: true,
+      }
+    }
+    eventHub.$watch(expOrFn, callback, options)
+  }
+
   Object.defineProperties(eventHub, {
     on: {
       get: function () {
@@ -62,6 +103,26 @@ function install (_Vue) {
     off: {
       get: function () {
         return off
+      },
+    },
+    setData: {
+      get: function () {
+        return setData
+      },
+    },
+    getData: {
+      get: function () {
+        return getData
+      },
+    },
+    delData: {
+      get: function () {
+        return delData
+      },
+    },
+    watch: {
+      get: function () {
+        return watch
       },
     },
   })

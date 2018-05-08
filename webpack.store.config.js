@@ -1,10 +1,10 @@
 const path = require('path')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/store.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'vue-event-hub.min.js',
+    filename: 'vue-event-hub-store.min.js',
     libraryTarget: 'umd',
     globalObject: 'this',
     library: 'VueEventHub',
