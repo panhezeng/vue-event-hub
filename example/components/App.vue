@@ -9,6 +9,9 @@
 </template>
 
 <script>
+  const Event = {
+    AppSetUser: 'AppSetUser',
+  }
   export default {
     name: 'App',
     data () {
@@ -21,16 +24,19 @@
         console.log(this.$eventHub.getData('user'), newVal, oldVal)
         this.user.push(newVal ? JSON.stringify(this.$eventHub.getData('user')) : 'undefined')
       })
-      this.$eventHub.on('AppSetUser', this.setUser.bind(this))
-      this.$eventHub.emit('AppSetUser', {name: 'phz'})
+      this.$eventHub.on(Event.AppSetUser, this.setUser)
+      this.$eventHub.emit(Event.AppSetUser, {name: 'phz1'})
       setTimeout(() => {
         this.$eventHub.delData('user')
-      }, 300)
+        // 这个事件已经监听不到了，因为setUser后off了
+        this.$eventHub.emit('AppSetUser', {name: 'phz2'})
+      }, 600)
 
     },
     methods: {
       setUser (data) {
         this.$eventHub.setData('user', data, true)
+        this.$eventHub.off('AppSetUser', this.setUser)
       },
     },
   }
