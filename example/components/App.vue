@@ -29,14 +29,14 @@
       setTimeout(() => {
         this.$eventHub.delData('user')
         // 这个事件已经监听不到了，因为setUser后off了
-        this.$eventHub.emit('AppSetUser', {name: 'phz2'})
+        this.$eventHub.emit(Event.AppSetUser, {name: 'phz2'})
       }, 600)
 
     },
     methods: {
       setUser (data) {
         this.$eventHub.setData('user', data, true)
-        this.$eventHub.off('AppSetUser', this.setUser)
+        this.$eventHub.off(Event.AppSetUser, this.setUser)
       },
     },
   }
