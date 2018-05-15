@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": false,
   "keywords": [
-    "vue",
+    "vuejs",
     "vue plugin",
     "event hub"
   ],
