@@ -4,6 +4,9 @@
 
 ## use
 
+`npm i @panhezeng/vue-event-hub -S`
+
+
 ### 默认不带数据管理功能的纯事件hub，可以搭配vuex使用
 ```javascript
 import VueEventHub from '@panhezeng/vue-event-hub'
