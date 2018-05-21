@@ -15,36 +15,69 @@ function install (_Vue) {
 
   Vue = _Vue
 
-  let eventHub = new Vue({
+  const eventHub = new Vue({
     data: {
-      events: [],
-      store: {},
+      events: {},
     },
   })
 
   function on (event, callback) {
-    if (eventHub.events.indexOf(String(event)) === -1) {
-      eventHub.events.push(String(event))
-      eventHub.$on(String(event), callback)
+    if (Object.prototype.toString.call(event) === '[object String]' && Object.prototype.toString.call(callback) === '[object Function]') {
+      if (Object.prototype.toString.call(eventHub.events[event]) !== '[object Array]') {
+        eventHub.events[event] = []
+      }
+      const events = eventHub.events[event]
+      const cbIndex = events.indexOf(callback)
+      if (cbIndex === -1) {
+        events.push(callback)
+        eventHub.$on(event, callback)
+      } else {
+        console.log(event + '事件已经监听' + callback + '函数 --eventHub.on')
+      }
     } else {
-      console.warn(event + ':已有同名事件，请换个事件名--$eventHub')
+      throw 'event必须为字符串，callback必须为函数 --eventHub.on'
     }
   }
 
   function off (event, callback, force) {
-    if (!event && !force) {
-      throw 'event必须传值，必须有事件名--$eventHub'
-    }
-    if (event) {
-      let eventIndex = eventHub.events.indexOf(String(event))
-      if (eventIndex === -1) {
-        console.warn(event + ':没有监听这个event--$eventHub')
+    let events
+    let cbIndex
+    if (force) {
+      if (Object.prototype.toString.call(event) === '[object String]') {
+        events = eventHub.events[event]
+        if (Object.prototype.toString.call(events) === '[object Array]') {
+          if (Object.prototype.toString.call(callback) === '[object Function]') {
+            cbIndex = events.indexOf(callback)
+            if (cbIndex !== -1) {
+              events.splice(cbIndex, 1)
+              eventHub.$off(event, callback)
+            }
+          } else {
+            eventHub.events[event] = []
+            eventHub.$off(event)
+          }
+        }
+      } else {
+        eventHub.events = {}
+        eventHub.$off()
       }
-      eventHub.events.splice(eventIndex, 1)
-      eventHub.$off(String(event), callback)
     } else {
-      eventHub.events = []
-      eventHub.$off()
+      if (Object.prototype.toString.call(event) === '[object String]' && Object.prototype.toString.call(callback) === '[object Function]') {
+        events = eventHub.events[event]
+        if (Object.prototype.toString.call(events) === '[object Array]') {
+          cbIndex = events.indexOf(callback)
+          if (cbIndex === -1) {
+            console.log(event + '事件没有监听' + callback + '函数 --eventHub.off')
+          } else {
+            events.splice(cbIndex, 1)
+            eventHub.$off(event, callback)
+          }
+        } else {
+          console.log('没有' + event + '事件 --eventHub.off')
+        }
+      } else {
+        throw 'event必须为字符串，callback必须为函数，如果想移除全部事件或某事件的全部监听函数，请传force为真 --eventHub.off'
+      }
     }
   }
 
