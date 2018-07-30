@@ -29,8 +29,7 @@
     "build:store": "webpack --mode production --config webpack.store.config.js"
   },
   "dependencies": {
-    "css-loader": "^0.28.11",
-    "vue": "^2.5.11"
+    "vue": "latest"
   },
   "browserslist": [
     "> 1%",
@@ -38,13 +37,14 @@
     "not ie <= 8"
   ],
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "vue-loader": "^15.2.4",
-    "vue-template-compiler": "^2.5.16",
-    "webpack": "^4.12.1",
-    "webpack-cli": "^2.1.5",
-    "webpack-dev-server": "^3.1.4"
+    "css-loader": "latest",
+    "babel-core": "latest",
+    "babel-loader": "latest",
+    "babel-preset-env": "latest",
+    "vue-loader": "latest",
+    "vue-template-compiler": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-dev-server": "latest"
   }
 }

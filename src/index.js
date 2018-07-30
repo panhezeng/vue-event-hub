@@ -9,7 +9,7 @@ let Vue
 function install (_Vue) {
 
   if (Vue) {
-    console.error('[VueEventHub] already installed. Vue.use(VueEventHub) should be called only once.')
+    console.warn('[VueEventHub] already installed. Vue.use(VueEventHub) should be called only once.')
     return
   }
 
@@ -110,9 +110,9 @@ function install (_Vue) {
 }
 
 // auto install in dist mode
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue)
-}
+// if (typeof window !== 'undefined' && window.Vue) {
+//   install(window.Vue)
+// }
 
 const VueEventHub = {
   install: install,

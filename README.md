@@ -74,9 +74,10 @@ import VueEventHub from '@panhezeng/vue-event-hub/dist/vue-event-hub-store.min.j
     delData
     
     
-    因为VueEventHub是全项目共用vue实例，所以覆写了on off实例方法，并提供了setData getData delData实例方法，这些方法对事件和数据操作进行了检查校验，并提供了相应的提示
-    因为hot热更新也会触发这个插件实例方法的错误警告提示，为了不影响hot更新调试，使用console.warn，而没有使用throw
-    本组件没有太复杂的东西，放心使用，如果觉得不好的地方，可以fork自行修改，非常简单
+    因为VueEventHub是全项目共用vue实例，所以覆写了on off实例方法，并提供了setData getData delData实例方法，这些方法对事件和数据操作进行了检查校验，并提供了相应的提示。
+    因为hot热更新也会触发这个插件实例方法的错误警告提示，为了不影响hot更新调试，使用console.warn，而没有使用throw。
+    本组件没有太复杂的东西，放心使用，如果有需求，可以fork修改。
+    externals vue方式使用此插件和internal一样，都需要显式use安装，为了保持使用方式一致，如需要自动安装功能，fork去掉auto install in dist mode下面代码的注释后重新编译即可。
     
 
 ## 编译
@@ -90,5 +91,9 @@ npm run dev:example
 
 # 编译插件
 npm run build
+
+# 发版
+npm version patch
+npm publish --access public
 ```
 
