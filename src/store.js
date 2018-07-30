@@ -181,9 +181,9 @@ function install (_Vue) {
 }
 
 // auto install in dist mode
-// if (typeof window !== 'undefined' && window.Vue) {
-//   install(window.Vue)
-// }
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue)
+}
 
 const VueEventHub = {
   install: install,

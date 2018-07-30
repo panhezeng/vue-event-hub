@@ -4,21 +4,43 @@
 
 ## use
 
-`npm i @panhezeng/vue-event-hub -S`
+### internal vue 方式
+`npm i vue @panhezeng/vue-event-hub -S`
 
-
-### 默认不带数据管理功能的纯事件hub，可以搭配vuex使用
+#### 默认不带数据管理功能的纯事件hub，可以搭配vuex使用
 ```javascript
+import Vue from 'vue'
 import VueEventHub from '@panhezeng/vue-event-hub'
-
 Vue.use(VueEventHub)
-
-console.log(Vue.eventHub)
 ```
 
-### 带数据管理功能的事件hub, 类似个极简的vuex
+#### 带数据管理功能的事件hub, 极简版vuex
 ```javascript
+import Vue from 'vue'
 import VueEventHub from '@panhezeng/vue-event-hub/dist/vue-event-hub-store.min.js'
+Vue.use(VueEventHub)
+```
+
+### external vue 方式
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.min.js"></script>
+```
+
+`npm i @panhezeng/vue-event-hub -S`
+
+```javascript
+// auto install
+import '@panhezeng/vue-event-hub'
+```
+or 
+```html
+<!--auto install-->
+<script src="https://cdn.jsdelivr.net/npm/@panhezeng/vue-event-hub@latest/dist/vue-event-hub.min.js"></script>
+```
+
+```javascript
+console.log(Vue.eventHub)
 ```
 
 ### 事件名和数据属性名，建议单独写一个静态类，这样管理使用方便，比如下面例子中的AppSetUser和user
@@ -77,7 +99,6 @@ import VueEventHub from '@panhezeng/vue-event-hub/dist/vue-event-hub-store.min.j
     因为VueEventHub是全项目共用vue实例，所以覆写了on off实例方法，并提供了setData getData delData实例方法，这些方法对事件和数据操作进行了检查校验，并提供了相应的提示。
     因为hot热更新也会触发这个插件实例方法的错误警告提示，为了不影响hot更新调试，使用console.warn，而没有使用throw。
     本组件没有太复杂的东西，放心使用，如果有需求，可以fork修改。
-    externals vue方式使用此插件和internal一样，都需要显式use安装，为了保持使用方式一致，如需要自动安装功能，fork去掉auto install in dist mode下面代码的注释后重新编译即可。
     
 
 ## 编译
