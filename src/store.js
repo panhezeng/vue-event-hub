@@ -18,8 +18,8 @@ function install (_Vue) {
   const eventHub = new Vue({
     data: {
       events: [],
-      store: {},
-    },
+      store: {}
+    }
   })
 
   function on (event, callback) {
@@ -123,12 +123,6 @@ function install (_Vue) {
     if (Object.prototype.toString.call(expOrFn) === '[object String]') {
       expOrFn = 'store.' + expOrFn
     }
-    if (!options) {
-      options = {
-        deep: true,
-        immediate: true,
-      }
-    }
     return eventHub.$watch(expOrFn, callback, options)
   }
 
@@ -136,45 +130,45 @@ function install (_Vue) {
     on: {
       get: function () {
         return on
-      },
+      }
     },
     emit: {
       get: function () {
         return eventHub.$emit
-      },
+      }
     },
     off: {
       get: function () {
         return off
-      },
+      }
     },
     setData: {
       get: function () {
         return setData
-      },
+      }
     },
     getData: {
       get: function () {
         return getData
-      },
+      }
     },
     delData: {
       get: function () {
         return delData
-      },
+      }
     },
     watch: {
       get: function () {
         return watch
-      },
-    },
+      }
+    }
   })
 
   // Vue添加实例属性
   Object.defineProperty(Vue.prototype, '$eventHub', {
     get: function () {
       return eventHub
-    },
+    }
   })
   // Vue添加全局属性
   Vue.eventHub = eventHub
@@ -186,7 +180,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 const VueEventHub = {
-  install: install,
+  install: install
 }
 
 export default VueEventHub
