@@ -65,7 +65,7 @@ or
 console.log(Vue.eventHub)
 ```
 
-### 事件名和数据属性名，建议单独写一个静态类，这样管理使用方便，比如下面例子中的AppSetUser和user
+#### 事件名和数据属性名，建议单独写一个静态类，这样管理使用方便，比如下面例子中的AppSetUser和user
 ```vue
 <script>
   const Event = {
