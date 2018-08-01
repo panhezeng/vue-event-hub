@@ -6,7 +6,9 @@ module.exports = {
     library: 'VueEventHub',
     umdNamedDefine: true,
   },
-  externals: {},
+  externals: {
+    'vue': 'Vue'
+  },
   module: {
     rules: [
       {

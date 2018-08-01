@@ -5,16 +5,18 @@ module.exports = {
     libraryTarget: 'umd',
     globalObject: 'this',
     library: 'VueEventHub',
-    umdNamedDefine: true,
+    umdNamedDefine: true
   },
-  externals: {},
+  externals: {
+    'vue': 'Vue'
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
-      },
-    ],
-  },
+        use: 'babel-loader'
+      }
+    ]
+  }
 }
