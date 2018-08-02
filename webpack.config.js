@@ -1,10 +1,28 @@
+const path = require('path')
+const fs = require('fs')
+
+const entry = {}
+try {
+  const files = fs.readdirSync(path.join(__dirname, 'src'))
+  files.forEach(function (file) {
+    if (/\.js$/.test(file)) {
+//      console.log(file)
+      const name = `vue-event-hub-${file.replace('.js', '')}`
+      entry[name] = `./src/${file}`
+    }
+  })
+} catch (e) {
+  return console.log('Unable to scan directory src: ' + e)
+}
+
 module.exports = {
+  entry: entry,
   output: {
-    filename: 'vue-event-hub.min.js',
+    filename: '[name].min.js',
     libraryTarget: 'umd',
     globalObject: 'this',
     library: 'VueEventHub',
-    umdNamedDefine: true,
+    umdNamedDefine: true
   },
   externals: {
     'vue': 'Vue'
@@ -14,8 +32,8 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
-      },
-    ],
-  },
+        use: 'babel-loader'
+      }
+    ]
+  }
 }

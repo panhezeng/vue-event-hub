@@ -4,24 +4,27 @@ module.exports = {
   entry: './example/main.js',
   output: {
     path: path.resolve(__dirname, 'docs'),
-    filename: 'example.js',
+    filename: 'example.js'
+  },
+  externals: {
+    'vue': 'Vue'
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        use: 'vue-loader',
+        use: 'vue-loader'
       },
       {
         test: /\.js$/,
         exclude: /node_modules|dist/,
-        use: 'babel-loader',
-      },
-    ],
+        use: 'babel-loader'
+      }
+    ]
   },
   plugins: [
-    new VueLoaderPlugin(),
+    new VueLoaderPlugin()
   ],
-  devServer: {},
+  devServer: {}
 }
 

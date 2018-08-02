@@ -58,7 +58,7 @@ import '@panhezeng/vue-event-hub'
 or 
 ```html
 <!--auto install-->
-<script src="https://cdn.jsdelivr.net/npm/@panhezeng/vue-event-hub@latest/dist/vue-event-hub.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@panhezeng/vue-event-hub@latest/dist/vue-event-hub-index.min.js"></script>
 ```
 
 ```javascript

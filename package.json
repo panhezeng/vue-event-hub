@@ -21,12 +21,11 @@
     "package.json",
     "README"
   ],
-  "main": "dist/vue-event-hub.min.js",
+  "main": "dist/vue-event-hub-index.min.js",
   "scripts": {
     "dev:example": "webpack-dev-server --mode development --open --hot --config webpack.example.config.js",
     "build:example": "rm -rf docs && mkdir docs && cp index.html docs && webpack --mode production --config webpack.example.config.js",
-    "build": "webpack --mode production",
-    "build:store": "webpack --mode production --config webpack.store.config.js"
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "vue": "latest"
