@@ -38,9 +38,6 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-const VueEventHub = {
+export const VueEventHub = {
   install: install
 }
-
-export default VueEventHub
-

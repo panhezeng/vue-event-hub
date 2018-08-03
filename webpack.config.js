@@ -20,9 +20,9 @@ module.exports = {
   output: {
     filename: '[name].min.js',
     libraryTarget: 'umd',
-    globalObject: 'this',
+    umdNamedDefine: true,
     library: 'VueEventHub',
-    umdNamedDefine: true
+    libraryExport: 'VueEventHub'
   },
   externals: {
     'vue': 'Vue'
