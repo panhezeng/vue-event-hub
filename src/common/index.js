@@ -17,32 +17,17 @@ export default function (eventHub) {
     }
   }
 
-  function off (event, callback, force) {
+  /**
+   * @param event 如果值为假，则清除所有eventHub的所有事件
+   * @param callback 如果值为假，则清除event参数的对应事件的所有监听函数
+   */
+  function off (event, callback) {
     let events
     let cbIndex
-    if (force) {
-      if (Object.prototype.toString.call(event) === '[object String]') {
-        events = eventHub.events[event]
-        if (Object.prototype.toString.call(events) === '[object Array]') {
-          if (Object.prototype.toString.call(callback) === '[object Function]') {
-            cbIndex = events.indexOf(callback)
-            if (cbIndex !== -1) {
-              events.splice(cbIndex, 1)
-              eventHub.$off(event, callback)
-            }
-          } else {
-            eventHub.events[event] = []
-            eventHub.$off(event)
-          }
-        }
-      } else {
-        eventHub.events = {}
-        eventHub.$off()
-      }
-    } else {
-      if (Object.prototype.toString.call(event) === '[object String]' && Object.prototype.toString.call(callback) === '[object Function]') {
-        events = eventHub.events[event]
-        if (Object.prototype.toString.call(events) === '[object Array]') {
+    if (Object.prototype.toString.call(event) === '[object String]') {
+      events = eventHub.events[event]
+      if (Object.prototype.toString.call(events) === '[object Array]') {
+        if (Object.prototype.toString.call(callback) === '[object Function]') {
           cbIndex = events.indexOf(callback)
           if (cbIndex === -1) {
             console.log(event + '事件没有监听' + callback + '函数 --eventHub.off')
@@ -51,11 +36,15 @@ export default function (eventHub) {
             eventHub.$off(event, callback)
           }
         } else {
-          console.log('没有' + event + '事件 --eventHub.off')
+          eventHub.events[event] = []
+          eventHub.$off(event)
         }
       } else {
-        throw 'event必须为字符串，callback必须为函数，如果想移除全部事件或某事件的全部监听函数，请传force为真 --eventHub.off'
+        console.log('没有' + event + '事件 --eventHub.off')
       }
+    } else {
+      eventHub.events = {}
+      eventHub.$off()
     }
   }
 

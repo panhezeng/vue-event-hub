@@ -24,6 +24,11 @@
     因为hot热更新也会触发这个插件实例方法的错误警告提示，为了不影响hot更新调试，使用console.warn，而没有使用throw。
     本组件没有太复杂的东西，放心使用，如果有需求，可以fork修改。
     修改了output方式，通过require或window方式使用，不需要加.default
+    /**
+     * @param event 如果值为假，则清除所有eventHub的所有事件
+     * @param callback 如果值为假，则清除event参数的对应事件的所有监听函数
+     */
+    function off (event, callback)
 
 ## 用法
 
@@ -117,7 +122,6 @@ npm run dev:example
 npm run build
 
 # 发版
-npm version patch
-npm publish --access public
+npm version patch && npm publish --access public
 ```
 
