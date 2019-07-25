@@ -2,12 +2,12 @@ export default function(eventHub) {
   function on(event, callback) {
     if (
       /^\[object String\]$/.test(Object.prototype.toString.call(event)) &&
-      /^\[object ([^F]*)?Function\]$/.test(
+      /^\[object [^F]*Function\]$/.test(
         Object.prototype.toString.call(callback)
       )
     ) {
       if (
-        !/^\[object ([^A]*)?Array\]$/.test(
+        !/^\[object [^A]*Array\]$/.test(
           Object.prototype.toString.call(eventHub.events[event])
         )
       ) {
@@ -36,12 +36,10 @@ export default function(eventHub) {
     if (/^\[object String\]$/.test(Object.prototype.toString.call(event))) {
       events = eventHub.events[event];
       if (
-        /^\[object ([^A]*)?Array\]$/.test(
-          Object.prototype.toString.call(events)
-        )
+        /^\[object [^A]*Array\]$/.test(Object.prototype.toString.call(events))
       ) {
         if (
-          /^\[object ([^F]*)?Function\]$/.test(
+          /^\[object [^F]*Function\]$/.test(
             Object.prototype.toString.call(callback)
           )
         ) {
