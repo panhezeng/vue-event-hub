@@ -6,8 +6,10 @@ try {
   const files = fs.readdirSync(path.join(__dirname, "src"));
   files.forEach(function(file) {
     if (/\.js$/.test(file)) {
-      //      console.log(file)
-      const name = `vue-event-hub-${file.replace(".js", "")}`;
+      let name = "vue-event-hub";
+      if (file !== "index.js") {
+        name = `vue-event-hub-${file.replace(".js", "")}`;
+      }
       entry[name] = `./src/${file}`;
     }
   });
