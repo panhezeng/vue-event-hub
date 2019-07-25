@@ -1,7 +1,7 @@
 {
   "name": "@panhezeng/vue-event-hub",
   "description": "A Vue plugin",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "author": "潘何增 <panhezeng@gmail.com> (http://apsay.com/)",
   "license": "MIT",
   "private": false,
