@@ -30,8 +30,6 @@
      */
     function off (event, callback)
 
-    打包 polyfills 应当是最终使用组件的应用的责任
-
 ## 用法
 
 ### internal vue 方式
